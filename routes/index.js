@@ -10,7 +10,7 @@ let todos = [];
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Endpoint to view all todos
+// Endpoint to view all tasks
 app.get('/', (req, res) => {
   res.json({ message: 'welcome to Todo App' });
 });
@@ -19,7 +19,7 @@ app.get('/todos', (req, res) => {
   res.json({ todos });
 });
 
-// Endpoint to add a new todo
+// Endpoint to add a new task
 app.post('/todos', (req, res) => {
   const { task } = req.body;
   console.log('wtf',req.body,task);
@@ -28,7 +28,7 @@ app.post('/todos', (req, res) => {
   res.json({ message: 'Todo added successfully', todo: newTodo });
 });
 
-// Endpoint to update a todo by ID
+// Endpoint to update a task by ID
 app.put('/todos/:id', (req, res) => {
   const todoId = parseInt(req.params.id);
   const updatedTask = req.body.task;
@@ -43,7 +43,7 @@ app.put('/todos/:id', (req, res) => {
   res.json({ message: 'Todo updated successfully', todo: todos[todoIndex] });
 });
 
-// Endpoint to delete a todo by ID
+// Endpoint to delete a tasks by ID
 app.delete('/todos/:id', (req, res) => {
   const todoId = parseInt(req.params.id);
 
