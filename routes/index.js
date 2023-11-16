@@ -1,7 +1,7 @@
 var express = require('express');
 const bodyParser = require('body-parser');
 var app = express.Router();
-const { v4: uuidv4 } = require('uuid');/* GET home page. */
+const { v4: uuidv4 } = require('uuid');
 // Sample hardcoded data
 let todos = [
 
@@ -11,11 +11,12 @@ let todos = [
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Endpoint to view all tasks
+
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Todo App' });
 });
 
+// Endpoint to view all tasks
 app.get('/todos', (req, res) => {
   res.json({ todos });
 });
