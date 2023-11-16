@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Endpoint to view all tasks
 app.get('/', (req, res) => {
-  res.json({ message: 'welcome to Todo App' });
+  res.json({ message: 'Welcome to Todo App' });
 });
 
 app.get('/todos', (req, res) => {
