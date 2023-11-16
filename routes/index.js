@@ -4,8 +4,8 @@ var app = express.Router();
 const { v4: uuidv4 } = require('uuid');/* GET home page. */
 // Sample hardcoded data
 let todos = [
-  {"id": 1, "task": "Learn Flask", "done": False},
-  {"id": 2, "task": "Build a Todo App", "done": False}
+  {"id": 1, "task": "Learn Flask", "done": 'false'},
+  {"id": 2, "task": "Build a Todo App", "done": 'false'},
 ];
 
 // Middleware to parse JSON requests
