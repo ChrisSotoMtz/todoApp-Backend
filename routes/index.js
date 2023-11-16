@@ -3,7 +3,10 @@ const bodyParser = require('body-parser');
 var app = express.Router();
 const { v4: uuidv4 } = require('uuid');/* GET home page. */
 // Sample hardcoded data
-let todos = [];
+let todos = [
+  {"id": 1, "task": "Learn Flask", "done": False},
+  {"id": 2, "task": "Build a Todo App", "done": False}
+];
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
@@ -28,16 +31,16 @@ app.post('/todos', (req, res) => {
 
 // Endpoint to update a task by ID
 app.put('/todos/:id', (req, res) => {
-  const todoId = parseInt(req.params.id);
+  const todoId = req.params.id;
   const updatedTask = req.body.task;
-  
+
   const todoIndex = todos.findIndex(todo => todo.id === todoId);
 
   if (todoIndex === -1) {
     return res.status(404).json({ message: 'Todo not found' });
   }
-
   todos[todoIndex].task = updatedTask;
+
   res.json({ message: 'Todo updated successfully', todo: todos[todoIndex] });
 });
 
