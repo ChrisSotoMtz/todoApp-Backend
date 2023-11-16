@@ -1,6 +1,6 @@
 # ToDo App with Express
 
-# Client url : https://todo-app-front-end-kappa.vercel.app/tasks
+# Client url : https://todo-app-front-end-kappa.vercel.app/
 
 # Client Repo : https://github.com/ChrisSotoMtz/todoApp-FrontEnd
 
