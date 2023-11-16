@@ -1,7 +1,7 @@
 var express = require('express');
 const bodyParser = require('body-parser');
 var app = express.Router();
-
+const uid = require('uid')
 /* GET home page. */
 // Sample hardcoded data
 let todos = [];
@@ -22,8 +22,7 @@ app.get('/todos', (req, res) => {
 // Endpoint to add a new task
 app.post('/todos', (req, res) => {
   const { task } = req.body;
-  console.log('wtf',req.body,task);
-  const newTodo = { id: todos.length + 1, task, done: false };
+  const newTodo = { id: uid, task, done: false };
   todos.push(newTodo);
   res.json({ message: 'Todo added successfully', todo: newTodo });
 });
