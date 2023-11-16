@@ -4,8 +4,7 @@ var app = express.Router();
 const { v4: uuidv4 } = require('uuid');/* GET home page. */
 // Sample hardcoded data
 let todos = [
-  {"id": 1, "task": "Learn Flask", "done": 'false'},
-  {"id": 2, "task": "Build a Todo App", "done": 'false'},
+
 ];
 
 // Middleware to parse JSON requests
@@ -47,9 +46,8 @@ app.put('/todos/:id', (req, res) => {
 // Endpoint to delete a tasks by ID
 app.delete('/todos/:id', (req, res) => {
   const todoId = (req.params.id);
-
   todos = todos.filter(todo => todo.id !== todoId);
-  res.json({ message: 'Todo deleted successfully' });
+  res.json({ message: 'Todo deleted successfully' + todoId });
 });
 app.delete('/todos', (req, res) => {
 
