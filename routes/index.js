@@ -22,7 +22,7 @@ app.get('/todos', (req, res) => {
 // Endpoint to add a new task
 app.post('/todos', (req, res) => {
   const { task } = req.body;
-  const newTodo = { id: uid, task, done: false };
+  const newTodo = { id: uid(), task, done: false };
   todos.push(newTodo);
   res.json({ message: 'Todo added successfully', todo: newTodo });
 });
