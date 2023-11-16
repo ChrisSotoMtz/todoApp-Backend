@@ -104,7 +104,7 @@ Before you begin, make sure you have the following installed:
 - Description: Delete all tasks.
 - Response:
   
-      ```json
+    ```json
         {
         " message": "All Todos deleted successfully"
         }
@@ -114,19 +114,23 @@ You can use tools like Postman to interact with the API.
 ## Adding a new task:
   -Method: POST
   -URL: http://localhost:3000/todos
-  -Body:
+- Body:
   
-      ```json
+    ```json
         {
-        "task": "Finish README"
+        " task": "Finish README"
         }
-- 
+
+
+
 ## Updating a task:
-Method: PUT
-URL: http://localhost:3000/todos/{id}
-Body:
+- Method: PUT
+- URL: http://localhost:3000/todos/{id}
+- Body:
   
-      ```json
+    ```json
         {
-      "task": "Update README"
+        " task": "Update  README"
         }
+
+
