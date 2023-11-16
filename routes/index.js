@@ -46,7 +46,7 @@ app.put('/todos/:id', (req, res) => {
 
 // Endpoint to delete a tasks by ID
 app.delete('/todos/:id', (req, res) => {
-  const todoId = parseInt(req.params.id);
+  const todoId = (req.params.id);
 
   todos = todos.filter(todo => todo.id !== todoId);
   res.json({ message: 'Todo deleted successfully' });
