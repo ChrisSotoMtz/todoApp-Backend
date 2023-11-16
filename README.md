@@ -1,4 +1,4 @@
-# ToDo App with Express, 
+# ToDo App with Express
 
 # Client url : https://todo-app-front-end-kappa.vercel.app/tasks
 
