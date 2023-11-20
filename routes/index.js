@@ -1,6 +1,7 @@
 var express = require('express');
 const bodyParser = require('body-parser');
 var app = express.Router();
+var cookieParser = require('cookie-parser')
 const { v4: uuidv4 } = require('uuid');
 // Sample hardcoded data
 let todos = [
@@ -10,9 +11,21 @@ let todos = [
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser())
 
+// Middleware to log requests
+app.use((req, res, next) => {
+  const signedCookieValue = req.signedCookies.user;
+  if (signedCookieValue) {
+    console.log('Signed Cookie Value:', signedCookieValue);
+  }
+  next();
+});
 
 app.get('/', (req, res) => {
+  res.cookie('user', 'Random User');
+
+  // Set a signed cookie
   res.json({ message: 'Welcome to Todo App' });
 });
 
