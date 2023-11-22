@@ -5,7 +5,10 @@ var cookieParser = require('cookie-parser')
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const moongoose = require('mongoose');
+const todoSchema = require('../Models/todo');
 
+const todom =  moongoose.model('todo',todoSchema);
 // Sample hardcoded data
 let todos = [];
 clientUsername = '';
@@ -20,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
+moongoose.connect('mongodb+srv://admin:njp9nvHPmhn9eNcB@cluster0.bhr49p2.mongodb.net/?retryWrites=true&w=majority')
 // Middleware to log requests
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Todo App' });
@@ -66,6 +70,8 @@ app.get('/todos', (req, res) => {
 app.post('/todos', (req, res) => {
   const { task,owner } = req.body;
   const newTodo = { id: uuidv4(), task, done: false,owner:owner };
+  const newDbTodo = createTodoScheme(newTodo);
+  console.log('newDbTodo',newDbTodo);
   todos.push(newTodo);
   res.json({ message: 'Todo added successfully', todo: newTodo });
 });
@@ -122,4 +128,9 @@ function authenticateJWT(req, res, next) {
   });
 }
 
+
+const createTodoScheme = async (Todo) => {
+  const todo = await todom.create(Todo);
+  console.log('ox',todo);
+};
 module.exports = app;
